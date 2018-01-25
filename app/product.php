@@ -12,14 +12,14 @@ class product extends Model
 	
 	function setNameAttribute($value)
 	{
-		$this->attribute['name'] = $value;
-		$this->attribute['slug'] = str_slug($value);
+		$this->attributes['name'] = $value;
+		$this->attributes['slug'] = str_slug($value);
 	}
 	
 	function category()
 	{
 		$this->belongsTo('App\category');
-	}
+	} 
 	
 	function brand()
 	{

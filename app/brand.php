@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class brand extends Model
 {
-    protected $table="categories";
+    //protected $table="categories";
 	
 	protected $fillable = [
 		'name', 'slug', 'logo'
@@ -14,8 +14,8 @@ class brand extends Model
 	
 	function setNameAttribute($value)
 	{
-		$this->attribute['name'] = $value;
-		$this->attribute['slug'] = str_slug($value);
+		$this->attributes['name'] = $value;
+		$this->attributes['slug'] = str_slug($value);
 	}
 	
 	function products()

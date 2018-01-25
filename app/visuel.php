@@ -15,3 +15,4 @@ class visuel extends Model
 		return $this->belongsTo('App\product');
 	}
 }
+ 
