@@ -17,7 +17,7 @@ $factory->define(App\promotion::class, function (Faker $faker) {
 	
 	$name = $faker->sentence();
 	$products = null;
-	$products = App\product::where('prix', '>', 30)->where('prix', '<', 40)->get();
+	$products = App\product::where('prix', '>', 30)->where('prix', '<', 45)->get();
 	
 	$ids = $products->pluck('id')->toArray();
 	$id = $faker->randomElement($ids);

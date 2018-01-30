@@ -21,3 +21,4 @@ class promotion extends Model
 	}
 		
 }
+ 

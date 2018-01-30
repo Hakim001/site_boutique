@@ -13,3 +13,6 @@
 
 Route::get('/', 'HomeController@index')->name('home'); 
 
+
+Route::get('/produits/{slug}', 'ProductController@index')->name('produits.index');
+

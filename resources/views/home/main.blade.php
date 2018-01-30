@@ -40,9 +40,9 @@ Accueil du site
                 <div class=" products promotions">
                     <div class="header_title"><h4>Promotions Products </h4></div>
                     <div class="row">
-                       @foreach($promotions as $product)
+                       @foreach($promotions as $promo)
                         <div class="col-sm-3">
-                            @include('includes._product')
+                            @include('includes._product', ['product' => $promo->product])
                         </div>
                         @endforeach
                         

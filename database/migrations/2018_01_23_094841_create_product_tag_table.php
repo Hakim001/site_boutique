@@ -33,3 +33,4 @@ class CreateProductTagTable extends Migration
         Schema::dropIfExists('product_tag');
     }
 }
+ 

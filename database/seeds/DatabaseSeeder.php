@@ -17,16 +17,17 @@ class DatabaseSeeder extends Seeder
         //$this->call(UsersTableSeeder::class);
 		
 		$this->call([
-			brandTableSeeder::class,
-			categoriesTableSeeder::class,
-			productsTableSeeder::class,
-			tagTableSeeder::class,
-			visuelTableSeeder::class,
 			UsersTableSeeder::class,
-			promotionTableSeeder::class,
-			//pageTableSeeder::class,
+	       	categoriesTableSeeder::class,
+	       	brandTableSeeder::class,
+	       	tagTableSeeder::class,
+	       	productsTableSeeder::class,
+	       	promotionTableSeeder::class,
+	       	visuelTableSeeder::class,
+            //PagesTableSeeder::class,,
 		]);
 		
 		Model::reguard();
     }
 }
+ 

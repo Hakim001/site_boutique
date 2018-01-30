@@ -7,32 +7,50 @@ use Illuminate\Database\Eloquent\Model;
 class product extends Model
 {
     protected $fillable = [
-		'name', 'slug', 'description', 'prix', 'qte', 'image', 'category_id', 'brand_id',
+		'name', 'slug', 'description', 'prix', 'qte', 'image', 'category_id', 'brand_id'
 	];
 	
-	function setNameAttribute($value)
+	public function setNameAttribute($value)
 	{
 		$this->attributes['name'] = $value;
 		$this->attributes['slug'] = str_slug($value);
 	}
 	
-	function category()
+	public function category()  
 	{
-		$this->belongsTo('App\category');
+		return $this->belongsTo('App\category');
 	} 
 	
-	function brand()
-	{
-		$this->belongsTo('App\brand');
+	public function brand()
+	{ 
+		return $this->belongsTo('App\brand');
 	}
 	
-	function visuels()
+	public function visuels()
 	{
-		$this->hasMany('App\visuel');
+		return $this->hasMany('App\visuel');
 	}
 	
-	function tags()
+	public function tags()
 	{
-		$this->belongsToMany('App\tag');
+		return $this->belongsToMany('App\tag');
+	}
+	public function promotions()
+	{
+		return $this->hasMany('App\promotion');
+	}
+	
+	public function onDiscount()
+	{
+		return $this->promotions()
+		->where('started_at', '<=', \Carbon\Carbon::now())
+		->where('finished_at', '>=', \Carbon\Carbon::now())
+	    ->first();	
+	}
+	
+	public function prixVente()
+	{
+		return $this->onDiscount()?$this->onDiscount()->prix:$this->prix;
 	}
 }
+ 

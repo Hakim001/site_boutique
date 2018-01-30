@@ -12,14 +12,15 @@ class tag extends Model
 		'name', 'slug'
 	];
 	
-	function setNameAttribute($value)
+	public function setNameAttribute($value)
 	{
 		$this->attributes['name'] = $value;
 		$this->attributes['slug'] = str_slug($value);
 	}
 	
-	function products()
+	public function products()
 	{
-		return $this->belongsToMany('App\Product');
+		return $this->belongsToMany('App\product');
 	}
 }
+

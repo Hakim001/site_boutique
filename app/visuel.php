@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class visuel extends Model
 {
     protected $fillable = [
-		'name', 'url', 'product_id'
+		'name', 'url', 'product_id',
 	];
 	
 	public function products()
@@ -15,4 +15,4 @@ class visuel extends Model
 		return $this->belongsTo('App\product');
 	}
 }
- 
+   
