@@ -16,3 +16,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/produits/{slug}', 'ProductController@index')->name('produits.index');
 
+Route::get('/catalogue/{categorie?}', 'CatalogueController@index')->name('catalogue');
+
+Route::get('/catalogue/marque/{marque}', 'CatalogueController@marque')->name('catalogue.marque');
