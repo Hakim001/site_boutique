@@ -34,7 +34,7 @@
                 <div class="tags">
                     <ul>
                        @foreach($product->tags as $tag)
-                        <li><a href="#">{{$tag->name}}</a></li>
+                        <li><a href="{{ route('catalogue.tag', ['slug' => $tag->slug]) }}">{{$tag->name}}</a></li>
 						          @endforeach
                        
                     </ul>

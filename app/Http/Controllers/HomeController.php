@@ -20,4 +20,9 @@ class HomeController extends Controller
 		
 		return view('home.main', compact('pubs', 'lasts', 'promotions'));
 	}
+	
+	public function contact()
+	{
+		return view('home.contact');
+	}
 }

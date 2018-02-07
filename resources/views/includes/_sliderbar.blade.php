@@ -23,7 +23,7 @@
                    
                    @foreach($brands as $brand)
                    
-                    <li> <a href="{{ route('catalogue.marque', ['slug' => $brand->slug])}}">{{ $brand->name }}</a> </li>
+                    <li> <a href="{{ route('catalogue.marque', ['slug' => $brand->slug]) }}">{{ $brand->name }}</a> </li>
                     
                     @endforeach
                 </ul>

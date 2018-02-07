@@ -22,29 +22,29 @@ Catalogue
                 </div>   
 
                 <div class="col-md-8">
-                    <form action="produits" method="GET">
+                    <form action="{{ route('catalogue.filter', ['categorie' => Request::segment(2)])}}" method="GET">
                         <ul class="list-actions">
                             <li> 
                                 <label>Trier par</label>
                                 <select class="custom-select" name="ordre">
-                                <option value="all" >All</option>
-                                <option value="new" >Nouveautés</option>
-                                <option value="ASC" >Noms : A-Z</option>
-                                <option value="DESC" >Noms : Z-A</option>
-                                <option value="prix-desc" >Prix décroissant</option>
-                                <option value="prix-asc" >Prix croissant</option>
-                                <option value="promotion" >Promotions</option>
+                                <option value="all" {{ app('request')->input('ordre') == 'all'?'selected':''}}>All</option>
+                                <option value="new" {{ app('request')->input('ordre') == 'new'?'selected':''}} >Nouveautés</option>
+                                <option value="ASC" {{ app('request')->input('ordre') == 'ASC'?'selected':''}} >Noms : A-Z</option>
+                                <option value="DESC" {{ app('request')->input('ordre') == 'DESC'?'selected':''}}>Noms : Z-A</option>
+                                <option value="prix-desc" {{ app('request')->input('ordre') == 'prix-desc'?'selected':''}} >Prix décroissant</option>
+                                <option value="prix-asc" {{ app('request')->input('ordre') == 'prix-asc'?'selected':''}}>Prix croissant</option>
+                                <option value="promotion" {{ app('request')->input('ordre') == 'promotion'?'selected':''}}>Promotions</option>
                                 </select>
                             </li>
                             <li> 
                                 <label>Afficher</label>
                                 <select class="custom-select" name="perpage">
-                                <option value="6" >6</option>
-                                <option value="9" >9</option>
-                                <option value="12" >12</option>
-                                <option value="15" >15</option>
-                                <option value="18" >18</option>
-                                <option value="21" >21</option>
+                                <option value="6" {{ app('request')->input('perpage') == '6'?'selected':''}} >6</option>
+                                <option value="9"{{ app('request')->input('perpage') == '9'?'selected':''}} >9</option>
+                                <option value="12 {{ app('request')->input('perpage') == '12'?'selected':''}}" >12</option>
+                                <option value="15" {{ app('request')->input('perpage') == '15'?'selected':''}}>15</option>
+                                <option value="18" {{ app('request')->input('perpage') == '18'?'selected':''}} >18</option>
+                                <option value="21" {{ app('request')->input('perpage') == '21'?'selected':''}}>21</option>
                                 </select>
                             </li>
                         </ul>
@@ -78,7 +78,21 @@ Catalogue
 
                     <li><a href="catalogue?page=2" rel="next">&raquo;</a></li>
                 </ul>-->
-                                      {{ $products->links() }}
+                                     
+                              @if(isset($categorie))
+                                     @php
+                                           $url = $categorie?$categorie.'/':'';
+                                    
+                                     @endphp 
+                                     
+                                    {{$products->withPath($url. '?ordre=' .$ordre.'&perpage=' .$perpage )}}
+                                           
+                                       @else
+                                       {{$products->links()}}
+                                      
+                                       
+                                         @endif    
+                                      
 
             </div>
         </div>

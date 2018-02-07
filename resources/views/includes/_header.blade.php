@@ -19,7 +19,9 @@
                         </a>
 
                         <form id="logout-form" action="logout" method="POST" style="display: none;">
-                        <input type="hidden" name="_token" value="DNsk1pXvVwa4lOAizpB7ZIGwWZyjg1lH7SuFXoSx">
+                        {{ csrf_field() }}
+                        
+                        
                         </form>
                         </li>
                         </ul>
@@ -35,8 +37,10 @@
                         <img src="img/logo.png" alt="logo">
                     </div>
                     <div class="col-md-6 search">
-                        <form class=" my-2 my-lg-0" action="search" method="POST">
-                            <input type="hidden" name="_token" value="DNsk1pXvVwa4lOAizpB7ZIGwWZyjg1lH7SuFXoSx">
+                        <form class=" my-2 my-lg-0" action="{{ route('search') }}" method="POST">
+                           {{ csrf_field() }}
+                           
+                            
                             <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="q">
                             <button class="btn  rounded-right" type="submit">Search</button>
                         </form>
@@ -57,19 +61,19 @@
 
                             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                                 <ul class="navbar-nav mr-auto">
+                                   
                                     <li class="nav-item active">
                                     <a class="nav-link" href="http://shop.dev/home">Home <span class="sr-only">(current)</span></a>
                                     </li>
 
                                     <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notre Catalogue</a>
+                                    <a class="nav-link dropdown-toggle" href="{{ route('catalogue') }}" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notre Catalogue</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-
-                                    <a  class="dropdown-item" href="http://shop.dev/catalogue/eos-recusandae-ab">Eos recusandae ab.</a> 
-                                    <a  class="dropdown-item" href="http://shop.dev/catalogue/vitae-et">Vitae et.</a> 
-                                    <a  class="dropdown-item" href="http://shop.dev/catalogue/aspernatur-repellat">Aspernatur repellat.</a> 
-                                    <a  class="dropdown-item" href="http://shop.dev/catalogue/officia-sequi">Officia sequi.</a> 
-                                    <a  class="dropdown-item" href="http://shop.dev/catalogue/enim-amet-est">Enim amet est.</a> 
+                                       @foreach($cats as $cat)          
+                                    <a  class="dropdown-item" href="{{ route('catalogue',['slug' =>$cat->slug]) }}">{{$cat->name}}</a>
+                                    
+                                      @endforeach 
+                                     
                                     </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -80,7 +84,7 @@
                                     </div>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link" href="http://shop.dev/nous%20contacter">Nous contacter</a>
+                                    <a class="nav-link" href="{{ route('contact') }}">Nous contacter</a>
                                     </li>
                                 </ul>
 

@@ -48,6 +48,11 @@ class product extends Model
 	    ->first();	
 	}
 	
+	public function liked()
+	{
+		return $this->belongsToMany('App\User');
+	}
+	
 	public function prixVente()
 	{
 		return $this->onDiscount()?$this->onDiscount()->prix:$this->prix;

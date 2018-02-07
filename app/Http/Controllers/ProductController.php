@@ -14,4 +14,3 @@ class ProductController extends Controller
 		return view('produits.index', compact('product', 'related'));
 	}
 }
-  
