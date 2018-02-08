@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ContactRequest;
+
 class HomeController extends Controller
 {
 	
@@ -24,5 +26,19 @@ class HomeController extends Controller
 	public function contact()
 	{
 		return view('home.contact');
+	}
+	
+	public function postcontact(ContactRequest $request)
+	{
+	  $message = \App\Message::create([
+		  'nom' => $request->nom,
+		  'email' => $request->email,
+		  'objet' => $request->objet,
+		  'content' => $request->content,
+	  ]);
+		
+		flash('Merci ! Pour votre message, votre demande sera traiter dans les plus bref délais !')->success();
+		
+		return redirect()->back();
 	}
 }

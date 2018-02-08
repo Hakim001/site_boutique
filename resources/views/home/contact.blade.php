@@ -39,40 +39,52 @@ nous contacter
                                     </div>
                                 </div>    
                                 <div class="col-md-7">
-                                   <form class="pub form-custom" method="post" action="nous%20contacter">
-                                      <input type="hidden" name="_token" value="DNsk1pXvVwa4lOAizpB7ZIGwWZyjg1lH7SuFXoSx">
+                                   <form class="pub form-custom" method="post" action="{{ route('contact.post') }}">
+                                        {{csrf_field()}}
                                       <div class="form-group row"> 
                                         <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                                         <div class="col-sm-10">
                                              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                  <div class="input-group-addon"><i class="fa fa-user" ></i></div>
-                                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom " value="">
+                                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom " value="{{ old('name')}}">
                                             </div>
                                          </div>
+                                         @if($errors->has('nom'))
+                                           <span class="help-block"><strong>{{ $errors->first('nom') }}</strong></span>
+                                           @endif
                                       </div>
                                      <div class="form-group row"> 
                                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                                         <div class="col-sm-10">
                                              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                  <div class="input-group-addon"><i class="fa fa-envelope" ></i></div>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email')}}">
                                             </div>
                                         </div>
+                                        @if($errors->has('email'))
+                                           <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                                           @endif
                                       </div>
                                       <div class="form-group row"> 
                                         <label for="objet" class="col-sm-2 col-form-label">Objet</label>
                                         <div class="col-sm-10">
                                              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                  <div class="input-group-addon"><i class="fa fa-lightbulb-o" ></i></div>
-                                                <input type="text" class="form-control" id="" name="objet" placeholder="Sujet " value="">
+                                                <input type="text" class="form-control" id="" name="objet" placeholder="Sujet " value="{{ old('objet') }}">
                                             </div>
                                         </div>
+                                        @if($errors->has('objet'))
+                                           <span class="help-block"><strong>{{ $errors->first('objet') }}</strong></span>
+                                           @endif
                                       </div>
 
                                       <div class="form-group">
-                                        <label for="content">Méssage</label>
-                                        <textarea class="form-control" id="content" name="content" rows="8"> </textarea>
+                                        <label for="content">Message</label>
+                                        <textarea class="form-control" id="content" name="content" rows="8">{{old('content')}} </textarea> 
                                     </div>
+                                      @if($errors->has('content'))
+                                           <span class="help-block"><strong>{{ $errors->first('content') }}</strong></span>
+                                           @endif
 
                                       <div class="form-group row">
                                           <div class="col-sm-12">
