@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 	       	productsTableSeeder::class,
 	       	promotionTableSeeder::class,
 	       	visuelTableSeeder::class,
-            //PagesTableSeeder::class,,
+            PagesTableSeeder::class,
 		]);
 		
 		Model::reguard();

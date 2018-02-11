@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ContactRequest;
 
-class HomeController extends Controller
+use App\Mail\ContactFromSite;
+
+class HomeController extends Controller 
 {
 	
     public function index()
@@ -37,8 +39,22 @@ class HomeController extends Controller
 		  'content' => $request->content,
 	  ]);
 		
+		//envoi email
+		//
+		//\Mail::to(env('CONCTACT_SITE_MAIL'))->send(new ContactFromSite($message));
+		
+		return new ContactFromSite($message);
+		
 		flash('Merci ! Pour votre message, votre demande sera traiter dans les plus bref délais !')->success();
 		
 		return redirect()->back();
+	}
+	
+	public function page($slug)
+	{
+		$page = \App\Page::where('slug', $slug)->FirstOrFail();
+		
+		
+		return view('home.page', compact('page'));
 	}
 }

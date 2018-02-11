@@ -79,8 +79,8 @@
                                     <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#">Aide & Support</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <a class="dropdown-item" href="http://shop.dev/page/aide">Aide </a>
-                                    <a class="dropdown-item" href="http://shop.dev/page/qui-sommes-nous">Qui sommes nous ? </a>
+                                    <a class="dropdown-item" href="{{ route('page', 'aide') }}">Aide </a>
+                                    <a class="dropdown-item" href="{{ route('page', 'qui-sommes-nous') }}">Qui sommes nous ? </a>
                                     </div>
                                     </li>
                                     <li class="nav-item">
