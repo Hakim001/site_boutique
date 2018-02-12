@@ -32,4 +32,11 @@ Route::post('/search', 'CatalogueController@search')->name('search');
 
 Route::get('/user/like/{id}', 'UserController@likes')->name('user.like');
 
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

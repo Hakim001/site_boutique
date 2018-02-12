@@ -4,9 +4,13 @@
             <div class="top_header rounded-top">
                 <div class="header_infos">
                     <ul>
+                       @guest
+                         <li><a href="{{ route('login') }}">Se connecter</a></li>
+                         <li><a href="{{ route('register') }}">Créer un compte</a></li>
+                       @else 
                         <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                        athakim <span class="caret"></span>
+                        {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -18,7 +22,7 @@
                         Logout
                         </a>
 
-                        <form id="logout-form" action="logout" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                         
                         
@@ -26,6 +30,7 @@
                         </li>
                         </ul>
                         </li>
+                        @endguest
 
                         <li> <a href=""><i class="fa fa-google-plus"></i></a> </li>
                         <li> <a href=""><i class="fa fa-facebook"></i></a> </li>
