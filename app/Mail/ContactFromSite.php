@@ -33,7 +33,7 @@ class ContactFromSite extends Mailable
      */
     public function build()
     {
-        return $this->from(env('CONCTACT_SITE_MAIL'))
+        return $this->from(env('CONTACT_SITE_EMAIL'))
 			->view('emails.contact')
 			->with([
 				    'nom' => $this->message->nom,

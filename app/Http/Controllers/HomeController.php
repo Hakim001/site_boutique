@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests\ContactForm;
 use App\Mail\ContactFromSite;
 
@@ -56,7 +57,7 @@ class HomeController extends Controller
         // envois d'émail,
         // 
         
-        //return new ContactFromSite($message);
+       // return new ContactFromSite($message);
 
         \Mail::to(env('CONTACT_SITE_EMAIL'))->send(new ContactFromSite($message));
         

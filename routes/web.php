@@ -13,8 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('home'); 
 
-Route::get('nous contactez', 'HomeController@contact')->name('contact');
-Route::post('nous cotactez', 'HomeController@postcontact')->name('contact.post');
+Route::get('/nous contactez', 'HomeController@contact')->name('contact');
+Route::post('/nous cotactez', 'HomeController@postcontact')->name('contact.post');
 
 Route::get('page{slug}', 'HomeController@Page')->name('page');
 
@@ -35,8 +35,8 @@ Route::get('/user/like/{id}', 'UserController@likes')->name('user.like');
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
