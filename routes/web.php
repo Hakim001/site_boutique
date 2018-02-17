@@ -32,6 +32,8 @@ Route::post('/search', 'CatalogueController@search')->name('search');
 
 Route::get('/user/like/{id}', 'UserController@likes')->name('user.like');
 
+Route::get('/panier', 'PanierController@index')->name('panier');
+
 
 
 

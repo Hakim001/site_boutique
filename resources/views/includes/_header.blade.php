@@ -98,7 +98,7 @@
                     </div>
                     <div class="cart ">
                         <i class="fa fa-shopping-cart"></i>
-                        <a href="http://shop.dev/panier" >Panier: (0) items</a>
+                        <a href="{{ route('panier') }}" >Panier: (0) items</a>
                     </div>
                 </div>
             </div>
