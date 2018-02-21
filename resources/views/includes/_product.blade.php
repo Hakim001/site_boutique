@@ -18,15 +18,17 @@
                             <span class="price ">{{ $product->prix }} €</span>
                             @endif
                             
-                            <a href="{{ route('produits.index', ['slug'=>$product->slug]) }}" class="btn btn-icon btn-primary" alt="Ajouter au panier"><i class="fa fa-cart-arrow-down"></i></a>
-                            
-                            @if(Auth::check())
+                            <a href="{{route('panier.add',['slug'=>$product->slug])}}" class="btn btn-icon btn-primary" alt="Ajouter au panier"><i class="fa fa-cart-arrow-down"></i></a>
+        
+                            <a href="{{route('produits.index',['slug'=>$product->slug])}}" class="btn btn-icon btn-secondary" alt="détails"><i class="fa fa-eye"></i></a>
+                           
+                             @if(Auth::check())
                             
                                @php
                                      $likes = \Auth::user()->likes->pluck('id');
                                @endphp
                             
-                            <a href="#" class="btn btn-icon btn-secondary {{in_array($product->id,$likes->toArray())?'':'btn-neutre'}} like" alt="détails"><i class="fa fa-eye"></i></a>
+                            <a href="#" class="btn btn-icon btn-secondary  {{in_array($product->id,$likes->toArray())?'':'btn-neutre'}} like" alt="favoris" data-id={{ $product->id }}><i class="fa fa-heart"></i></a>
                             
                             @else
                             <a href="#" class="btn btn-icon btn-secondary  btn-neutre like" alt="favoris" data-id={{ $product->id }}><i class="fa fa-heart"></i></a>

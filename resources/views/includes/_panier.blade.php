@@ -18,24 +18,34 @@
 		              </tr>
 		            </thead>
 		            <tbody>
-		            			            			              	<tr>
-			                <td scope="row">1</td>
-			                <td class="product_name"><a href="produit/voluptas-possimus-consequuntur-ut-voluptas-ut-aut-sit">Voluptas possimus consequuntur ut voluptas ut aut sit.</a></td>
+		                @php
+		                  $index=1;
+		                @endphp
+		            
+		                @foreach ($panier as $product)
+		            	<tr>
+			                <td scope="row">{{ $index }}</td>
+			                <td class="product_name"><a href="{{ route('produits.index', ['slug' => str_slug($product->name)]) }}">{{ $product->name }}</a></td>
 			                <td>
-		                        <div class="input-group-sm">
-	                              <span class="input-group-btn-sm">
-	                                <button class="btn btn-secondary subOne  " type="button" data-input="1">-</button>
-	                              </span>
-	                              <input type="text" class="form-control-sm  small-input" id="input-1"  aria-label="qte" value="1 " readonly>
-	                              <span class="input-group-btn-sm">
-	                                <button class="btn btn-secondary addOne " type="button"  data-input="1">+</button>
-	                              </span>
-		                        </div>
+		                <div class="input-group-sm">
+                          <span class="input-group-btn-sm">
+                             <button class="btn btn-secondary subOne  " type="button" data-input="{{$product->id}}">-</button>
+                          </span>
+                            <input type="text" class="form-control-sm  small-input" id="input-{{$product->id}}"  aria-label="qte" value="{{$product->qty}} " readonly>
+                           <span class="input-group-btn-sm">
+                           <button class="btn btn-secondary addOne " type="button"  data-input="{{$product->id}}">+</button>
+                          </span>
+                       </div>
 			                </td>
-		                	<td>22.68 €</td>
-		                	<td id="total-1"><span>22.68</span> €</td>
+		                	<td>{{ round($product->price, 2)}} €</td>
+		                	<td id="total-{{$product->id}}"><span>{{round($product->price * $product->qty)}}</span> €</td>
 		                	<td><a href="panier/delete/1" class="btn btn-icon btn-danger "> <i class="fa fa-trash"></i></a></td>
 		              	</tr>
+              		      @php
+		                    $index ++;
+		                  @endphp
+              		  
+	              		  @endforeach	              			              	
 		              			              			              	<tr>
 			                <td scope="row">2</td>
 			                <td class="product_name"><a href="produit/voluptas-molestiae-sapiente-consequatur-illo-laborum-inventore">Voluptas molestiae sapiente consequatur illo laborum inventore.</a></td>

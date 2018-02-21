@@ -34,6 +34,8 @@ Route::get('/user/like/{id}', 'UserController@likes')->name('user.like');
 
 Route::get('/panier', 'PanierController@index')->name('panier');
 
+Route::get('panier/add/{slug}','PanierController@add')->name('panier.add');
+
 
 
 
