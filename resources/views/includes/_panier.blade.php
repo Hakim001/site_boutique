@@ -38,37 +38,20 @@
                        </div>
 			                </td>
 		                	<td>{{ round($product->price, 2)}} €</td>
-		                	<td id="total-{{$product->id}}"><span>{{round($product->price * $product->qty)}}</span> €</td>
-		                	<td><a href="panier/delete/1" class="btn btn-icon btn-danger "> <i class="fa fa-trash"></i></a></td>
+		                	<td id="total-{{$product->id}}"><span>{{round($product->price * $product->qty, 2)}}</span> €</td>
+		                	<td><a href="{{route('panier.delete', ['id' => $product->id])}}" class="btn btn-icon btn-danger "> <i class="fa fa-trash"></i></a></td>
 		              	</tr>
               		      @php
 		                    $index ++;
 		                  @endphp
               		  
 	              		  @endforeach	              			              	
-		              			              			              	<tr>
-			                <td scope="row">2</td>
-			                <td class="product_name"><a href="produit/voluptas-molestiae-sapiente-consequatur-illo-laborum-inventore">Voluptas molestiae sapiente consequatur illo laborum inventore.</a></td>
-			                <td>
-		                        <div class="input-group-sm">
-	                              <span class="input-group-btn-sm">
-	                                <button class="btn btn-secondary subOne  " type="button" data-input="3">-</button>
-	                              </span>
-	                              <input type="text" class="form-control-sm  small-input" id="input-3"  aria-label="qte" value="1 " readonly>
-	                              <span class="input-group-btn-sm">
-	                                <button class="btn btn-secondary addOne " type="button"  data-input="3">+</button>
-	                              </span>
-		                        </div>
-			                </td>
-		                	<td>36.48 €</td>
-		                	<td id="total-3"><span>36.48</span> €</td>
-		                	<td><a href="panier/delete/3" class="btn btn-icon btn-danger "> <i class="fa fa-trash"></i></a></td>
-		              	</tr>
-		              			              			              <tr>
+		              			              			              	
+		              	<tr>
 		              	<td colspan="2"><form method="POST" action="">
 		              		
 						  	<form class="form-inline">
-							  		<input type="hidden" name="_token" value="DNsk1pXvVwa4lOAizpB7ZIGwWZyjg1lH7SuFXoSx">
+							  		{{csrf_field()}}
 								  <div class="form-group ">
 								    <label for="coupon" class="">Coupon de réduction</label>
 								    <input type="text" class="form-control" id="coupon" placeholder="Ex: REMISE20">
@@ -81,15 +64,24 @@
 		              	
 		              <tr class="">
 		                <td colspan="4" class="text-right "> Total HT</td>
-		                <td  colspan="2"id="totalht"><span>59.16</span> €</td>
+		                <td  colspan="2"id="totalht"><span>{{ \Cart::subtotal() }}</span> €</td>
 		              </tr>
 		              <tr class="">
 		                <td colspan="4" class="text-right "> T.V.A </td>
-		                <td colspan="2" id="tax"><span>11.83</span> €</td>
+		                <td colspan="2" id="tax"><span>{{ \Cart::tax() }}</span> €</td>
 		              </tr>
 		              <tr class="total ">
 		                <td colspan="4" class="text-right"> Total</td>
-		                <td  colspan="2" id="total"><span>70.99</span> €</td>
+		                <td  colspan="2" id="total"><span>{{ \Cart::total() }}</span> €</td>
 		              </tr>
 		            </tbody>
 		          </table>
+		          
+		         <div class="row">
+             <div class="col-md-6 text-left">
+              <a href="{{route('catalogue')}}" class="btn btn-icon btn-primary  "><i class="fa fa-reply"></i><span>Retour au catalogue</span></a>
+            </div>
+            <div class="col-md-6 text-right">
+              <a  href="{{route('panier.valider')}}" class="btn btn-icon btn-black"><i class="fa fa-check"></i><span>Valider le Panier </span></a>
+            </div>
+         </div>

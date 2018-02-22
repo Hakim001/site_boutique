@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function likes($id)
+    public function like($id)
 	{
 		if(\Auth::guest())
 			

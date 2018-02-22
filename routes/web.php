@@ -30,13 +30,18 @@ Route::get('/produit/{categorie?}', 'CatalogueController@filter')->name('catalog
 
 Route::post('/search', 'CatalogueController@search')->name('search');
 
-Route::get('/user/like/{id}', 'UserController@likes')->name('user.like');
+Route::get('/user/like/{id}', 'UserController@like')->name('user.like');
 
 Route::get('/panier', 'PanierController@index')->name('panier');
 
 Route::get('panier/add/{slug}','PanierController@add')->name('panier.add');
 
+Route::get('panier/addOne/{id}','PanierController@addOne')->name('panier.addOne');
+Route::get('panier/subOne/{id}','PanierController@subOne')->name('panier.subOne');
 
+Route::get('panier/delete/{id}','PanierController@delete')->name('panier.delete');
+
+Route::get('panier/validation','PanierController@valider')->name('panier.valider'); 
 
 
 
