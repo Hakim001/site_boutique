@@ -83,6 +83,26 @@ public function add($slug, $qte=1)
     	// flash ....
     	return redirect()->back();
     }
+	
+	 public function addProduct(Request $request)
+    {
+    	return $this->add($request->slug , $request->qte);
+    }
+	
+	 public function valider()
+    {
+        $panier = \Cart::content();
+
+        return view('panier.valider',compact('panier'));
+
+    }
+	
+	public function payer()
+	{
+		$panier = \Cart::total();
+		
+		return view('panier.payer', compact('panier'));
+	}
 
 
 }

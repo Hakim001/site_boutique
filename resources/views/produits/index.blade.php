@@ -51,19 +51,25 @@
                 
                  <div>
                     <p>Stock : {{ $product->qte>0?$product->qte.' pièces' :'insuffisant' }}  </p>
-                    <form  method="POST" action="panier/add">
-                      <input type="hidden" name="_token" value="DNsk1pXvVwa4lOAizpB7ZIGwWZyjg1lH7SuFXoSx">
-                      <input  name="slug" type="hidden" value="quam-provident-debitis-amet-est-fuga-amet">
+                   
+                      <form  method="POST" action="{{ route('panier.addProduct') }}">
+                       
+                         {{ csrf_field() }}
+                         
+                         
+                      <input  name="slug" type="hidden" value="{{$product->slug}}">
+                       
+                       
                         <div class="row mt-4">
                             <div class="col-md-6"><label for="qte">Quantité:</label></div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                   <span class="input-group-btn">
-                                    <button class="btn btn-secondary subOneProduct  " type="button" data-input="2">-</button>
+                                    <button class="btn btn-secondary subOneProduct  " type="button" data-input="{{ $product->id }}">-</button>
                                   </span>
-                                  <input type="text" class="form-control" id="input-2"  aria-label="qte" value="1" readonly name="qte">
+                                  <input type="text" class="form-control" id="input-{{$product->id}}"  aria-label="qte" value="1" readonly name="qte">
                                   <span class="input-group-btn">
-                                    <button class="btn btn-secondary addOneProduct " type="button"  data-input="2">+</button>
+                                    <button class="btn btn-secondary addOneProduct " type="button"  data-input="{{ $product->id }}">+</button>
                                   </span>
                               </div>
                             </div>
@@ -71,12 +77,13 @@
                         <div class="row mt-4">
                           <div class="col-md-12">
                             <button type="submit" class="btn btn-icon btn-primary" ><i class="fa fa-cart-arrow-down"></i><span>Ajouter au panier</span></button>
-                                                                                        <a href="#" class="btn btn-icon btn-secondary  btn-neutre like" alt="favoris" data-id=2><i class="fa fa-heart"></i></a>
+                                                                                       
+                           <a href="#" class="btn btn-icon btn-secondary  btn-neutre like" alt="favoris" data-id=2><i class="fa fa-heart"></i></a>
                               
                          </div> 
                         </div>
-                    </form>
-                 </div>
+					 </form>
+                           </div>
                  <div class="row mt-4">
                      
                      <div class="line-top">
@@ -93,27 +100,22 @@
         <div class="row pub">
             <div class=" description">
               <h4>Description :</h4>
-            <p>{{ $product->description }}</p>
+            <p>{{$product->description}}</p>
             </div>  
 
         </div>
-        
-         <div class="products">
+        <div class="products">
           <div class="header_title"><h4>Voir aussi </h4></div>
            <div class="row">
-           
-                          @foreach($related as $product)         
-                            
-                             <div class="col-md-3 ">
-                              
-                              @include('includes._product')
-                              
-			                   </div>
-                              
-                            @endforeach  
-                  
-                  
-            </div>
-      </div>
-  </div>
-@endsection
+          
+             @foreach($related as $product) 
+				<div class="col-md-3">
+					@include('includes._product')
+				</div>
+             @endforeach            
+    	</div>
+       </div>
+   </div>
+
+@endsection           
+                                   

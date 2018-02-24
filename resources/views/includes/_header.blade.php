@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 logo">
-                        <img src="img/logo.png" alt="logo">
+                        <img src="{{asset('img/logo.png')}}" alt="logo">
                     </div>
                     <div class="col-md-6 search">
                         <form class=" my-2 my-lg-0" action="{{ route('search') }}" method="POST">
@@ -68,7 +68,7 @@
                                 <ul class="navbar-nav mr-auto">
                                    
                                     <li class="nav-item active">
-                                    <a class="nav-link" href="http://shop.dev/home">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                                     </li>
 
                                     <li class="nav-item dropdown">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="cart ">
                         <i class="fa fa-shopping-cart"></i>
-                        <a href="{{ route('panier') }}" >Panier: (0) items</a>
+                        <a href="{{ route('panier') }}" >Panier: ({{ \Cart::count()?:'0'}}) items</a>
                     </div>
                 </div>
             </div>

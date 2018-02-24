@@ -42,9 +42,15 @@ Route::get('panier/subOne/{id}','PanierController@subOne')->name('panier.subOne'
 Route::get('panier/delete/{id}','PanierController@delete')->name('panier.delete');
 
 Route::get('panier/validation','PanierController@valider')->name('panier.valider'); 
+ 
+Route::post('panier/add', 'PanierController@addProduct')->name('panier.addProduct');
 
 
+Route::group(['middleware'=>['auth']],function(){
 
+	Route::get('panier/paiement','PanierController@payer')->name('panier.payer');
+	
+});
 
 Auth::routes();
 
