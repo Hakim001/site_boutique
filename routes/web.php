@@ -50,6 +50,9 @@ Route::group(['middleware'=>['auth']],function(){
 
 	Route::get('panier/paiement','PanierController@payer')->name('panier.payer');
 	
+	Route::post('paiement/stripe','PaiementController@checkoutStripe')->name('paiement.stripe');
+	
+	
 });
 
 Auth::routes();

@@ -17,7 +17,7 @@ Panier / Paiement
                <div class="col-md-6 cell example example2" id ="Btn-stripe">
                   <h3>Paiment avec carte</h3>
                     <hr>
-                  <form action="#" method="POST">
+                  <form action="{{ route('paiement.stripe') }}" method="POST">
               
                       {{csrf_field()}}
                       <script
