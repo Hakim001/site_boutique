@@ -50,8 +50,14 @@ Route::group(['middleware'=>['auth']],function(){
 
 	Route::get('panier/paiement','PanierController@payer')->name('panier.payer');
 	
-	Route::post('paiement/stripe','PaiementController@checkoutStripe')->name('paiement.stripe');
+	Route::post('/paiement/stripe','PaiementController@checkoutStripe')->name('paiement.stripe');
 	
+	Route::get('/paiement/paypal','PaiementController@checkoutPaypal')->name('checkout.paypal');
+	
+	Route::get('/paiement/paypal/done','PaiementController@checkoutPaypalDone')->name('checkout.paypal.done');
+	
+	Route::get('/paiement/paypal/cancel','PaiementController@checkoutPaypalCancel')->name('checkout.paypal.cancel');
+
 	
 });
 
